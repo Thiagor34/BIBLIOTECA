@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'adicionar.css'%}">
+    <script defer src="{% static 'jquery.mask.js' %}"></script>
+    <script defer src="{% static 'jquery.mask.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="titulo">
+            <h1>Adicionar Mídia</h1>
+        </div>
+            <div class="logout">
+                <a href="{% url 'logout' %}">SAIR</a>
+            </div>
+        </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data" action=""> {% csrf_token %}
+        <input name="title" value="{{midia.title}}" type="text" placeholder="Título">
+        <input class="release_year" name="release_year" value="{{midia.release_year}}" type="text"
+            placeholder="Ano de Lançamento">
+        <input name="director" value="{{midia.director}}" type="text" placeholder="Nome do Diretor">
+        <input name="description" value="{{midia.description}}" type="text" placeholder="Descrição">
+        <input name="created_at" value="{{midia.created_at}}" type="date">
+        <button type="submit">Adicionar</button>
+    </form>
+</body>
+
+</html>

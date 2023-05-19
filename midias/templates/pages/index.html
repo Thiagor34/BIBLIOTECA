@@ -6,56 +6,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <title>Document</title>
 </head>
 
 <body>
-    <h1>Biblioteca</h1>
+    <div class="navbar">
+        <div class="titulo">
+            <h1>Biblioteca</h1>
+        </div>
+        <div class="logout">
+            <a href="{% url 'logout' %}">SAIR</a>
+        </div>
+    </div>
     <form action="{% url 'busca' %}">
         <input type="text" name="search" placeholder="Buscar midia">
         <button type="submit">Buscar</button>
     </form>
-    <!-- <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Release Year</th>
-                <th>Director</th>
-                <th>Description</th>
-                <th>Created At</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for midia in midias %}
-            <tr>
-                <td>{{midia.id}}</td>
-                <td>{{midia.title}}</td>
-                <td>{{midia.release_year}}</td>
-                <td>{{midia.director}}</td>
-                <td>{{midia.description}}</td>
-                <td>{{midia.created_at}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table> -->
-    <!-- <div class="pagination">
+    <div class="add-btn">
+        <a class="adicionar" href="{% url 'adicionar' %}">Adicionar Mídia</a>
+        <div class="filter-btn">
+            <a class="ativo" href="{% url 'adicionar' %}">Ativos</a>
+            <a class="inativo" href="{% url 'adicionar' %}">Inativos</a>
+        </div>
+    </div>
+    <div class="cards">
+        {% for midia in midias %}
+        <div class="card" id="filmes">
+            <img src="https://source.unsplash.com/190x220/?pikachu" alt="">
+            <h4><a href="{% url 'detalhes' midia.id %}">{{midia.title}}</a></h4>
+            <h6>{{midia.release_year}}</h6>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
         <a href="#">1</a>
         <a href="#">2</a>
         <a href="#">3</a>
         <a href="#">4</a>
         <a href="#">5</a>
-    </div> -->
-    {% for midia in midias %}
-    <div class="cards">
-        <div class="card" id="filmes">
-            <img src="https://source.unsplash.com/150x250/?pikachu" alt="">
-            <h2>{{midia.title}}</h2>
-            <h3>{{midia.release_year}}</h3>
-        </div>
     </div>
-    {% endfor %}
 
 </body>
 

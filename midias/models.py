@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Midias(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     release_year = models.IntegerField()
     director = models.TextField()
@@ -12,3 +14,4 @@ class Midias(models.Model):
     
     class Meta: 
         verbose_name_plural = 'Midias'
+        

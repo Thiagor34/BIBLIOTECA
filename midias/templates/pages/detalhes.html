@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'detalhes.css'%}">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="cards">
+        <div class="card">
+            {% if contato.imagem %}
+            <img class="profile" src="{{contato.imagem.url}}" alt="">
+            {% else %}
+            <img src="https://t3.ftcdn.net/jpg/03/46/83/96/240_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="">
+            {% endif %}
+        </div>
+        <div class="infos">
+            <h2>Título: {{midia.title}}</h2>
+            <h3>Ano Lançamento: {{midia.release_year}}</h3>
+            <h3>Diretor: {{midia.director}}</h3>
+            <h3>Descrição: {{midia.description}}</h3>
+            <h3>Criado em: {{midia.created_at}}</h3>  
+        </div>
+        <div class="buttons">
+            <a href="{% url 'deletar' midia.id %}" class="del">Excluir</a>
+            <a href="{% url 'editar' midia.id %}" class="alt">Alterar</a>
+        </div>
+    </div>
+
+</body>
+
+</html>T
